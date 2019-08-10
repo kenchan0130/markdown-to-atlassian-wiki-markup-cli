@@ -1,0 +1,61 @@
+{
+  "name": "@kenchan0130/markdown-to-atlassian-wiki-markup-cli",
+  "version": "0.0.0",
+  "description": "Command line interface of markdown-to-atlassian-wiki-markup (https://github.com/kenchan0130/markdown-to-atlassian-wiki-markup)",
+  "bin": {
+    "markdownToAtlassianWikiMarkup": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --max-warnings=0 src/** --ext .ts",
+    "lint:fix": "eslint src/** --ext .ts --fix",
+    "test": "jest",
+    "preversion": "[ \"$(git symbolic-ref --short HEAD)\" != master ] || [ -n \"$(git status --porcelain)\" ] && exit 1 || true",
+    "postversion": "git push origin $(git describe --abbrev=0 --tags) && git push origin master"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenchan0130/markdown-to-atlassian-wiki-markup-cli.git"
+  },
+  "author": "Tadayuki Onishi <tt.tanishi100@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kenchan0130/markdown-to-atlassian-wiki-markup-cli/issues"
+  },
+  "homepage": "https://github.com/kenchan0130/markdown-to-atlassian-wiki-markup-cli",
+  "keywords": [
+    "Atlassian",
+    "Confluence",
+    "JIRA",
+    "Markdown",
+    "Wiki markup",
+    "CLI"
+  ],
+  "dependencies": {
+    "@kenchan0130/markdown-to-atlassian-wiki-markup": "^1.2.0",
+    "commander": "^2.20.0",
+    "encoding-japanese": "^1.0.29",
+    "read-pkg": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/encoding-japanese": "^1.0.15",
+    "@types/jest": "^24.0.16",
+    "@types/node": "^12.7.1",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-jest": "^22.15.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  }
+}
