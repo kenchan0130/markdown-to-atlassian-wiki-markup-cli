@@ -1,6 +1,6 @@
 {
   "name": "@kenchan0130/markdown-to-atlassian-wiki-markup-cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Command line interface of markdown-to-atlassian-wiki-markup (https://github.com/kenchan0130/markdown-to-atlassian-wiki-markup)",
   "bin": {
     "markdownToAtlassianWikiMarkup": "dist/index.js"
