@@ -59,6 +59,7 @@ cat /path/to/markdown-file | markdownToAtlassianWikiMarkup
 ### Test
 
 ```sh
+npm ci
 npm run test
 ```
 
