@@ -38,7 +38,7 @@
     "CLI"
   ],
   "dependencies": {
-    "@kenchan0130/markdown-to-atlassian-wiki-markup": "^2.1.0",
+    "@kenchan0130/markdown-to-atlassian-wiki-markup": "^3.0.0",
     "commander": "^4.0.0",
     "encoding-japanese": "^1.0.29",
     "read-pkg": "^5.2.0"
