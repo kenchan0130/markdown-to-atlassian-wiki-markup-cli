@@ -1,12 +1,13 @@
-import { markdownToAtlassianWikiMarkup } from "@kenchan0130/markdown-to-atlassian-wiki-markup";
-
-import path from "path";
-import readPkg from "read-pkg";
 import commander from "commander";
 import Encoding from "encoding-japanese";
+import path from "path";
+import readPkg from "read-pkg";
+
+import { markdownToAtlassianWikiMarkup } from "@kenchan0130/markdown-to-atlassian-wiki-markup";
+
+import { fileStream } from "./fileStream";
 import { processArguments } from "./processArguments";
 import { standardInput } from "./standardInput";
-import { fileStream } from "./fileStream";
 
 export interface CLIResponse {
   stdout?: string;
@@ -21,7 +22,7 @@ class CLI {
       return { stdout: markdownToAtlassianWikiMarkup(text) };
     }
 
-    const packages = await readPkg();
+    const packages = await readPkg({ cwd: `${path.join(__dirname, "..")}` });
     commander
       .version(packages.version, "-v, --version")
       .description("Convert markdown to atlassian wiki markup")
