@@ -31,7 +31,7 @@ class CLI {
 
     if (!processArguments.hasPassedArguments()) {
       return {
-        stdout: commander.helpInformation()
+        stdout: commander.helpInformation(),
       };
     }
 
@@ -44,7 +44,7 @@ class CLI {
     const text = Encoding.convert(buffer, {
       from: detectedEncoding,
       to: "UTF8",
-      type: "string"
+      type: "string",
     }) as string;
 
     const wikiMarkupText = Encoding.convert(
@@ -52,7 +52,7 @@ class CLI {
       {
         from: "UTF8",
         to: detectedEncoding,
-        type: "string"
+        type: "string",
       }
     ) as string;
     return { stdout: wikiMarkupText };
