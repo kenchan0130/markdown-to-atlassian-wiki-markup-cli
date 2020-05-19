@@ -72,7 +72,7 @@ The __node__ is good language.
         .mockImplementation((): string[] => [
           "node",
           "/path/to/dummy",
-          "dummuy.txt"
+          "dummuy.txt",
         ]);
       jest
         .spyOn(processArguments, "hasPassedArguments")
