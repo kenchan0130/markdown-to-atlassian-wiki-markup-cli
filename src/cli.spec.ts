@@ -3,12 +3,12 @@ import { cli } from "./cli";
 import { fileStream } from "./fileStream";
 import { processArguments } from "./processArguments";
 
-describe("async #run", (): void => {
-  beforeEach((): void => {
+describe("async #run", () => {
+  beforeEach(() => {
     jest.restoreAllMocks();
   });
 
-  describe("gotten text with pipe (from standard input)", (): void => {
+  describe("gotten text with pipe (from standard input)", () => {
     const inputText = `# This is UTF-8 markdown
 
 * This is list 1
@@ -19,21 +19,19 @@ describe("async #run", (): void => {
 The __node__ is good language.
 
 `;
-    beforeEach((): void => {
+    beforeEach(() => {
       jest
         .spyOn(standardInput, "isTTY")
         .mockImplementation((): boolean => false);
 
       jest.spyOn(standardInput, "readStreamAsync").mockImplementation(
         (): Promise<string> => {
-          return new Promise((resolve, _reject): void => resolve(inputText));
+          return Promise.resolve(inputText);
         }
       );
     });
 
-    it("should output markdown is converted to atlassian wiki markup", async (): Promise<
-      void
-    > => {
+    it("should output markdown is converted to atlassian wiki markup", async () => {
       const cliResult = await cli.run();
       const expected = `h1. This is UTF-8 markdown
 
@@ -50,7 +48,7 @@ The *node* is good language.
     });
   });
 
-  describe("specified file", (): void => {
+  describe("specified file", () => {
     const inputText = `# This is UTF-8 markdown
 
 * This is list 1
@@ -61,7 +59,7 @@ The *node* is good language.
 The __node__ is good language.
 
 `;
-    beforeEach((): void => {
+    beforeEach(() => {
       jest
         .spyOn(standardInput, "isTTY")
         .mockImplementation((): boolean => true);
@@ -80,16 +78,12 @@ The __node__ is good language.
 
       jest.spyOn(fileStream, "readFileAsync").mockImplementation(
         (_path, _options): Promise<Buffer> => {
-          return new Promise((resolve, _reject): void =>
-            resolve(Buffer.from(inputText))
-          );
+          return Promise.resolve(Buffer.from(inputText));
         }
       );
     });
 
-    it("should output markdown is converted to atlassian wiki markup", async (): Promise<
-      void
-    > => {
+    it("should output markdown is converted to atlassian wiki markup", async () => {
       const cliResult = await cli.run();
       const expected = `h1. This is UTF-8 markdown
 
