@@ -37,6 +37,12 @@
     "Wiki markup",
     "CLI"
   ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
   "dependencies": {
     "@kenchan0130/markdown-to-atlassian-wiki-markup": "^3.0.0",
     "commander": "^5.0.0",
