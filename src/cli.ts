@@ -9,14 +9,14 @@ import { fileStream } from "./fileStream";
 import { processArguments } from "./processArguments";
 import { standardInput } from "./standardInput";
 
-export interface CLIResponse {
-  stdout?: string;
-  stderr?: string;
-}
+export type CLIResponse = {
+  readonly stdout?: string;
+  readonly stderr?: string;
+};
 
 class CLI {
   public async run(): Promise<CLIResponse> {
-    // Support pipe
+    // Support pipe (stdin)
     if (!standardInput.isTTY()) {
       const text = await standardInput.readStreamAsync();
       return { stdout: markdownToAtlassianWikiMarkup(text) };
@@ -35,7 +35,14 @@ class CLI {
       };
     }
 
-    const filePath = commander.args.shift() as string;
+    const filePath = [...commander.args].shift();
+
+    // This library doesn't expect processing to get here, as we've confirmed with ProcessArguments#hasPassedArguments().
+    if (!filePath) {
+      return {
+        stderr: "Could not get file path from your arguments.",
+      };
+    }
 
     const buffer = await fileStream.readFileAsync(
       path.resolve(process.cwd(), filePath)

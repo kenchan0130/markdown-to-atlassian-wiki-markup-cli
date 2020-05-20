@@ -3,7 +3,7 @@
 import { cli, CLIResponse } from "./cli";
 
 (async (): Promise<void> => {
-  const result = await (async (): Promise<CLIResponse> => {
+  const cliResponse = await (async (): Promise<CLIResponse> => {
     try {
       return await cli.run();
     } catch (error) {
@@ -11,12 +11,12 @@ import { cli, CLIResponse } from "./cli";
     }
   })();
 
-  if (result.stdout) {
-    process.stdout.write(result.stdout);
-  } else if (result.stderr) {
-    console.error(result.stderr);
+  if (cliResponse.stdout) {
+    process.stdout.write(cliResponse.stdout);
+  } else if (cliResponse.stderr) {
+    console.error(cliResponse.stderr);
     process.on("exit", (): void => process.exit(1));
   } else {
-    throw new Error("CLI result is unexpected values.");
+    throw new Error(`CLI response is unexpected value. ${{ cliResponse }}`);
   }
 })().catch(console.error);
