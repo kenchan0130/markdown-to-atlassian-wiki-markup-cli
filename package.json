@@ -52,7 +52,7 @@
   "devDependencies": {
     "@types/encoding-japanese": "^1.0.15",
     "@types/jest": "^25.1.1",
-    "@types/node": "^13.1.0",
+    "@types/node": "^14.0.6",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "eslint": "^6.6.0",
