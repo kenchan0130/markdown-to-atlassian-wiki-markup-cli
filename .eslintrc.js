@@ -15,7 +15,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     tsconfigRootDir: ".",
-    project: "./tsconfig.json",
+    project: "./tsconfig.eslint.json",
   },
   rules: {
     "prettier/prettier": [
