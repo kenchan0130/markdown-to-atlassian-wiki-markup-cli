@@ -1,7 +1,7 @@
 import commander from "commander";
 import Encoding from "encoding-japanese";
 import path from "path";
-import readPkg from "read-pkg";
+import { readPackageAsync } from "read-pkg";
 
 import { markdownToAtlassianWikiMarkup } from "@kenchan0130/markdown-to-atlassian-wiki-markup";
 
@@ -17,7 +17,9 @@ class CLI {
       return markdownToAtlassianWikiMarkup(text);
     }
 
-    const packages = await readPkg({ cwd: `${path.join(__dirname, "..")}` });
+    const packages = await readPackageAsync({
+      cwd: `${path.join(__dirname, "..")}`,
+    });
     commander
       .version(packages.version, "-v, --version")
       .description("Convert markdown to atlassian wiki markup")
