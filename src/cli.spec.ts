@@ -24,11 +24,11 @@ The __node__ is good language.
         .spyOn(standardInput, "isTTY")
         .mockImplementation((): boolean => false);
 
-      jest.spyOn(standardInput, "readStreamAsync").mockImplementation(
-        (): Promise<string> => {
+      jest
+        .spyOn(standardInput, "readStreamAsync")
+        .mockImplementation((): Promise<string> => {
           return Promise.resolve(inputText);
-        }
-      );
+        });
     });
 
     it("should output markdown is converted to atlassian wiki markup", async () => {
@@ -76,11 +76,11 @@ The __node__ is good language.
         .spyOn(processArguments, "hasPassedArguments")
         .mockImplementation((): boolean => true);
 
-      jest.spyOn(fileStream, "readFileAsync").mockImplementation(
-        (_path, _options): Promise<Buffer> => {
+      jest
+        .spyOn(fileStream, "readFileAsync")
+        .mockImplementation((_path, _options): Promise<Buffer> => {
           return Promise.resolve(Buffer.from(inputText));
-        }
-      );
+        });
     });
 
     it("should output markdown is converted to atlassian wiki markup", async () => {
@@ -119,11 +119,11 @@ The *node* is good language.
         .spyOn(processArguments, "hasPassedArguments")
         .mockImplementation((): boolean => true);
 
-      jest.spyOn(fileStream, "readFileAsync").mockImplementation(
-        (_path, _options): Promise<Buffer> => {
+      jest
+        .spyOn(fileStream, "readFileAsync")
+        .mockImplementation((_path, _options): Promise<Buffer> => {
           return Promise.resolve(Buffer.from(inputText));
-        }
-      );
+        });
     });
 
     it("should output empty string", async () => {
